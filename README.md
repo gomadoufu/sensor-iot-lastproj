@@ -14,7 +14,7 @@
 - data.csv
 
 
-# cables.gl由来のもの
+## cables.gl由来のもの
 → git cloneした後、index.htmlを開くことでアプリケーションを再現可能
 
 - assets
