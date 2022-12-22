@@ -1,0 +1,543 @@
+[
+    {
+        "id": "b40b63dd132d3333",
+        "type": "tab",
+        "label": "フロー 1",
+        "disabled": false,
+        "info": "",
+        "env": []
+    },
+    {
+        "id": "107cf17490c585c6",
+        "type": "aedes broker",
+        "z": "b40b63dd132d3333",
+        "name": "",
+        "mqtt_port": 1883,
+        "mqtt_ws_bind": "port",
+        "mqtt_ws_port": "",
+        "mqtt_ws_path": "",
+        "cert": "",
+        "key": "",
+        "certname": "",
+        "keyname": "",
+        "dburl": "",
+        "usetls": false,
+        "x": 290,
+        "y": 300,
+        "wires": [
+            [],
+            []
+        ]
+    },
+    {
+        "id": "2cab5c69343e3ebd",
+        "type": "mqtt in",
+        "z": "b40b63dd132d3333",
+        "name": "MQTT_from_M5",
+        "topic": "M5-sense",
+        "qos": "2",
+        "datatype": "json",
+        "broker": "563506838427de29",
+        "nl": false,
+        "rap": true,
+        "rh": 0,
+        "inputs": 0,
+        "x": 280,
+        "y": 460,
+        "wires": [
+            [
+                "bace71ab33ed7a58",
+                "69fc01e92c598795",
+                "a03b23dc16a7018a",
+                "a9945d5184e415f9",
+                "e8f1cdca8cdfde16"
+            ]
+        ]
+    },
+    {
+        "id": "bace71ab33ed7a58",
+        "type": "change",
+        "z": "b40b63dd132d3333",
+        "name": "pitch",
+        "rules": [
+            {
+                "t": "set",
+                "p": "payload",
+                "pt": "msg",
+                "to": "payload.pitch",
+                "tot": "msg"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 570,
+        "y": 460,
+        "wires": [
+            [
+                "dcb736f01be1da20",
+                "e7a0fd1f6cf0deda",
+                "2db608dc53e50a44"
+            ]
+        ]
+    },
+    {
+        "id": "69fc01e92c598795",
+        "type": "change",
+        "z": "b40b63dd132d3333",
+        "name": "roll",
+        "rules": [
+            {
+                "t": "set",
+                "p": "payload",
+                "pt": "msg",
+                "to": "payload.roll",
+                "tot": "msg"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 570,
+        "y": 600,
+        "wires": [
+            [
+                "788e716a8193d88b",
+                "d56654bf84130a4d",
+                "26632c96ce9fa5e0"
+            ]
+        ]
+    },
+    {
+        "id": "dcb736f01be1da20",
+        "type": "ui_text",
+        "z": "b40b63dd132d3333",
+        "group": "e7faa7c032df7634",
+        "order": 1,
+        "width": 0,
+        "height": 0,
+        "name": "",
+        "label": "pitch",
+        "format": "{{msg.payload}}",
+        "layout": "row-spread",
+        "className": "",
+        "x": 990,
+        "y": 460,
+        "wires": []
+    },
+    {
+        "id": "788e716a8193d88b",
+        "type": "ui_text",
+        "z": "b40b63dd132d3333",
+        "group": "e7faa7c032df7634",
+        "order": 0,
+        "width": 0,
+        "height": 0,
+        "name": "",
+        "label": "roll",
+        "format": "{{msg.payload}}",
+        "layout": "row-spread",
+        "className": "",
+        "x": 990,
+        "y": 640,
+        "wires": []
+    },
+    {
+        "id": "e7a0fd1f6cf0deda",
+        "type": "ui_chart",
+        "z": "b40b63dd132d3333",
+        "name": "",
+        "group": "e7faa7c032df7634",
+        "order": 2,
+        "width": "0",
+        "height": "0",
+        "label": "ピッチ",
+        "chartType": "line",
+        "legend": "false",
+        "xformat": "HH:mm:ss",
+        "interpolate": "bezier",
+        "nodata": "",
+        "dot": true,
+        "ymin": "-180",
+        "ymax": "180",
+        "removeOlder": "8",
+        "removeOlderPoints": "",
+        "removeOlderUnit": "3600",
+        "cutout": 0,
+        "useOneColor": false,
+        "useUTC": false,
+        "colors": [
+            "#1f77b4",
+            "#aec7e8",
+            "#ff7f0e",
+            "#2ca02c",
+            "#98df8a",
+            "#d62728",
+            "#ff9896",
+            "#9467bd",
+            "#c5b0d5"
+        ],
+        "outputs": 1,
+        "useDifferentColor": false,
+        "className": "",
+        "x": 990,
+        "y": 520,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "d56654bf84130a4d",
+        "type": "ui_chart",
+        "z": "b40b63dd132d3333",
+        "name": "",
+        "group": "e7faa7c032df7634",
+        "order": 3,
+        "width": 0,
+        "height": 0,
+        "label": "ロール",
+        "chartType": "line",
+        "legend": "false",
+        "xformat": "HH:mm",
+        "interpolate": "bezier",
+        "nodata": "",
+        "dot": false,
+        "ymin": "-180",
+        "ymax": "180",
+        "removeOlder": "8",
+        "removeOlderPoints": "",
+        "removeOlderUnit": "3600",
+        "cutout": 0,
+        "useOneColor": false,
+        "useUTC": false,
+        "colors": [
+            "#1f77b4",
+            "#aec7e8",
+            "#ff7f0e",
+            "#2ca02c",
+            "#98df8a",
+            "#d62728",
+            "#ff9896",
+            "#9467bd",
+            "#c5b0d5"
+        ],
+        "outputs": 1,
+        "useDifferentColor": false,
+        "className": "",
+        "x": 990,
+        "y": 700,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "a03b23dc16a7018a",
+        "type": "websocket out",
+        "z": "b40b63dd132d3333",
+        "name": "WebSocket_Send",
+        "server": "9eee86296967b7d8",
+        "client": "",
+        "x": 590,
+        "y": 980,
+        "wires": []
+    },
+    {
+        "id": "626e3a20858a0b20",
+        "type": "websocket in",
+        "z": "b40b63dd132d3333",
+        "name": "WebSocket_Receive",
+        "server": "9eee86296967b7d8",
+        "client": "",
+        "x": 290,
+        "y": 1240,
+        "wires": [
+            [
+                "16ba75935dc01f71"
+            ]
+        ]
+    },
+    {
+        "id": "ce0ef45048f0648c",
+        "type": "mqtt out",
+        "z": "b40b63dd132d3333",
+        "name": "MQTT_to_M5",
+        "topic": "M5-act",
+        "qos": "2",
+        "retain": "",
+        "respTopic": "",
+        "contentType": "",
+        "userProps": "",
+        "correl": "",
+        "expiry": "",
+        "broker": "563506838427de29",
+        "x": 1020,
+        "y": 1240,
+        "wires": []
+    },
+    {
+        "id": "16ba75935dc01f71",
+        "type": "trigger",
+        "z": "b40b63dd132d3333",
+        "name": "",
+        "op1": "{\"message\":\"wakeup\"}",
+        "op2": "",
+        "op1type": "json",
+        "op2type": "nul",
+        "duration": "100",
+        "extend": false,
+        "overrideDelay": false,
+        "units": "ms",
+        "reset": "",
+        "bytopic": "all",
+        "topic": "topic",
+        "outputs": 1,
+        "x": 680,
+        "y": 1240,
+        "wires": [
+            [
+                "ce0ef45048f0648c"
+            ]
+        ]
+    },
+    {
+        "id": "d70acc31d1dc8ddf",
+        "type": "ui_gauge",
+        "z": "b40b63dd132d3333",
+        "name": "",
+        "group": "e7faa7c032df7634",
+        "order": 5,
+        "width": 0,
+        "height": 0,
+        "gtype": "wave",
+        "title": "CO2濃度",
+        "label": "tvoc",
+        "format": "{{value}}",
+        "min": 0,
+        "max": "5000",
+        "colors": [
+            "#00b500",
+            "#e6e600",
+            "#ca3838"
+        ],
+        "seg1": "",
+        "seg2": "",
+        "className": "",
+        "x": 1000,
+        "y": 940,
+        "wires": []
+    },
+    {
+        "id": "a9945d5184e415f9",
+        "type": "change",
+        "z": "b40b63dd132d3333",
+        "name": "co2",
+        "rules": [
+            {
+                "t": "set",
+                "p": "payload",
+                "pt": "msg",
+                "to": "payload.co2",
+                "tot": "msg"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 570,
+        "y": 840,
+        "wires": [
+            [
+                "0863458b209d610e",
+                "d70acc31d1dc8ddf"
+            ]
+        ]
+    },
+    {
+        "id": "0863458b209d610e",
+        "type": "ui_text",
+        "z": "b40b63dd132d3333",
+        "group": "e7faa7c032df7634",
+        "order": 0,
+        "width": 0,
+        "height": 0,
+        "name": "",
+        "label": "co2",
+        "format": "{{msg.payload}}",
+        "layout": "row-spread",
+        "className": "",
+        "x": 990,
+        "y": 840,
+        "wires": []
+    },
+    {
+        "id": "2db608dc53e50a44",
+        "type": "ui_gauge",
+        "z": "b40b63dd132d3333",
+        "name": "",
+        "group": "e7faa7c032df7634",
+        "order": 6,
+        "width": 0,
+        "height": 0,
+        "gtype": "compass",
+        "title": "ピッチ",
+        "label": "degree",
+        "format": "{{value}}",
+        "min": "-180",
+        "max": "180",
+        "colors": [
+            "#00b500",
+            "#e6e600",
+            "#ca3838"
+        ],
+        "seg1": "",
+        "seg2": "",
+        "className": "",
+        "x": 990,
+        "y": 580,
+        "wires": []
+    },
+    {
+        "id": "26632c96ce9fa5e0",
+        "type": "ui_gauge",
+        "z": "b40b63dd132d3333",
+        "name": "",
+        "group": "e7faa7c032df7634",
+        "order": 7,
+        "width": 0,
+        "height": 0,
+        "gtype": "compass",
+        "title": "ロール",
+        "label": "degree",
+        "format": "{{value}}",
+        "min": "-180",
+        "max": "180",
+        "colors": [
+            "#00b500",
+            "#e6e600",
+            "#ca3838"
+        ],
+        "seg1": "",
+        "seg2": "",
+        "className": "",
+        "x": 990,
+        "y": 760,
+        "wires": []
+    },
+    {
+        "id": "25203457f12b9623",
+        "type": "csv",
+        "z": "b40b63dd132d3333",
+        "name": "",
+        "sep": ",",
+        "hdrin": "",
+        "hdrout": "none",
+        "multi": "one",
+        "ret": "\\n",
+        "temp": "",
+        "skip": "0",
+        "strings": true,
+        "include_empty_strings": "",
+        "include_null_values": "",
+        "x": 810,
+        "y": 1060,
+        "wires": [
+            [
+                "0da94b57deb4f7b0"
+            ]
+        ]
+    },
+    {
+        "id": "0da94b57deb4f7b0",
+        "type": "file",
+        "z": "b40b63dd132d3333",
+        "name": "",
+        "filename": "/Users/gomadoufu/Documents/University/Class/sensor-iot/lastproj/data.csv",
+        "filenameType": "str",
+        "appendNewline": false,
+        "createDir": false,
+        "overwriteFile": "false",
+        "encoding": "none",
+        "x": 1410,
+        "y": 1060,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "e8f1cdca8cdfde16",
+        "type": "function",
+        "z": "b40b63dd132d3333",
+        "name": "CSVデータ構築",
+        "func": "let now = new Date();\nlet nowStr =\n    \"\" + now.getFullYear() +\n    \"/\" + ('0' + (now.getMonth() + 1)).slice(-2) +\n    \"/\" + ('0' + now.getDate()).slice(-2) +\n    \" \" + ('0' + now.getHours()).slice(-2) +\n    \":\" + ('0' + now.getMinutes()).slice(-2) +\n    \":\" + ('0' + now.getSeconds()).slice(-2);\n\nmsg.payload = {\n    // 日付\n    date: nowStr,\n    // ピッチ\n    pitch: msg.payload.pitch,\n    //ロール\n    roll: msg.payload.roll,\n    //CO2\n    co2: msg.payload.co2\n}\n\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 560,
+        "y": 1060,
+        "wires": [
+            [
+                "25203457f12b9623"
+            ]
+        ]
+    },
+    {
+        "id": "563506838427de29",
+        "type": "mqtt-broker",
+        "name": "localhost",
+        "broker": "localhost",
+        "port": "1883",
+        "clientid": "",
+        "autoConnect": true,
+        "usetls": false,
+        "protocolVersion": "4",
+        "keepalive": "60",
+        "cleansession": true,
+        "birthTopic": "",
+        "birthQos": "0",
+        "birthPayload": "",
+        "birthMsg": {},
+        "closeTopic": "",
+        "closeQos": "0",
+        "closePayload": "",
+        "closeMsg": {},
+        "willTopic": "",
+        "willQos": "0",
+        "willPayload": "",
+        "willMsg": {},
+        "userProps": "",
+        "sessionExpiry": ""
+    },
+    {
+        "id": "e7faa7c032df7634",
+        "type": "ui_group",
+        "name": "sensor-net",
+        "tab": "248d8770be12445d",
+        "order": 1,
+        "disp": true,
+        "width": "6",
+        "collapse": false,
+        "className": ""
+    },
+    {
+        "id": "9eee86296967b7d8",
+        "type": "websocket-listener",
+        "path": "/ws/node-red",
+        "wholemsg": "false"
+    },
+    {
+        "id": "248d8770be12445d",
+        "type": "ui_tab",
+        "name": "ホーム",
+        "icon": "dashboard",
+        "disabled": false,
+        "hidden": false
+    }
+]
